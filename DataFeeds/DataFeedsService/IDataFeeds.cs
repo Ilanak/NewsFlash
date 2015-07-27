@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
 using System.Security.Policy;
 using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
 
 namespace DataFeedsService
 {
@@ -24,6 +20,9 @@ namespace DataFeedsService
 
         [DataMember]
         public string Title { get; set; }
+
+        [DataMember]
+        public string Text { get; set; }
 
         [DataMember]
         public string[] Keywords { get; set; }
