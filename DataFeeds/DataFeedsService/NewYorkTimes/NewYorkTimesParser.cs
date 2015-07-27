@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Security.Policy;
+using System.ServiceModel;
 using System.Threading.Tasks;
 using System.Web;
 using System.Xml.Schema;
@@ -25,22 +26,13 @@ namespace DataFeedsService.faroo
 
         public async Task<DataFeed[]> GetFeedsAsync(string topic, int maxResults, DateTime queryStartTime)
         {
-            //check maxResult and period
-            
-            List<DataFeed> feeds = new List<DataFeed>();
-            string nytTopic;
-            
-            try
-            {
-                nytTopic = topicTranslator[topic];
-            }
-            catch (Exception e)
+            if (!topicTranslator.ContainsKey(topic) || maxResults < 0 || queryStartTime >= DateTime.Now)
             {
                 return null;
             }
 
-            int periodInHours = (int) Math.Floor((DateTime.Now - queryStartTime).TotalHours);
-            string url = string.Format(urlTemplate, nytTopic, periodInHours, maxResults);
+            int periodInHours = (int) Math.Ceiling((DateTime.Now - queryStartTime).TotalHours);
+            string url = string.Format(urlTemplate, topicTranslator[topic], periodInHours, maxResults);
 
             string response = (await ApiHandler.GetResponseAsync(domain,url));
             if (response == null)
@@ -48,35 +40,52 @@ namespace DataFeedsService.faroo
                 return null;
             }
 
-            //string content = httpResponse.Content.ContentToString();
-            //httpResponse.GetResponseStream();
-                //Stream receiveStream = response.GetResponseStream();
-            //StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
-            //txtBlock.Text = readStream.ReadToEnd();
-            JObject jsonResponse = JObject.Parse(response);
+            JObject jsonResponse;
+            int resultsFeedNumber;
+            try
+            {
+                jsonResponse = JObject.Parse(response);
+                resultsFeedNumber = (int) jsonResponse["num_results"];
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
 
+            return GetDataFeedsFromResponse(jsonResponse, resultsFeedNumber,maxResults);
+        }
 
+        private DataFeed[] GetDataFeedsFromResponse(JObject jsonResponse, int resultsFeedNumber, int maxResults)
+        {
+            List<DataFeed> feeds = new List<DataFeed>();
 
-
-            int resultsFeedNumber = (int) jsonResponse["num_results"];
             for (int i = 0; i < Math.Min(resultsFeedNumber, maxResults); i++)
             {
-                var result = jsonResponse["result"][i];
-                //result["multimedia"].Children()
+                DataFeed feed;
 
-
-                DataFeed feed = new DataFeed
+                try
                 {
-                    Link = new Url((string) result["url"]),
-                    Title = (string) result["title"],
-                    PublishTime = DateTime.Parse((string) result["published_date"]),
-                    Source = (string) result["source"],
-                    Image = new Url((string) result[""])
-                };
+                    var result = jsonResponse["results"][i];
+
+                    feed = new DataFeed
+                    {
+                        Link = new Url((string) result["url"]),
+                        Title = (string) result["title"],
+                        PublishTime = DateTime.Parse((string) result["created_date"]),
+                        Source = (string) result["source"],
+                        Text = (string) result["abstract"]
+                        //Image = new Url((string) result[""])
+                    };
+                }
+                catch(Exception e)
+                {
+                    continue;
+                }
                 feeds.Add(feed);
             }
 
             return feeds.ToArray();
         }
+
     }
 }
