@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Web;
 using System.Xml.Schema;
+using Newtonsoft.Json.Linq;
 
 namespace DataFeedsService.faroo
 {
@@ -18,14 +20,32 @@ namespace DataFeedsService.faroo
             {"s1","t1"}
         };
 
-        public Task<DataFeed[]> GetFeedsAsync(string topic, int maxResults, DateTime queryStartTime)
+        public async Task<DataFeed[]> GetFeedsAsync(string topic, int maxResults, DateTime queryStartTime)
         {
+            DataFeed[] feeds = new DataFeed[]; 
             string nytTopic = topicTranslator[topic];
-            string url = string.Format(urlTemplate, nytTopic, maxResults);
+            int periodInHours = (DateTime.Now - queryStartTime).Hours;
+            string url = string.Format(urlTemplate, nytTopic, periodInHours, maxResults);
 
-            return Task.FromResult(new DataFeed[0]);
+            string response = null; //Michael's function
+            JObject jsonResponse = JObject.Parse(response);
+
+            int resultsFeedNumber = (int) jsonResponse["num_results"];
+            for (int i = 0; i < Math.Min(resultsFeedNumber, maxResults); i++)
+            {
+                var result = jsonResponse["result"][i];
+                //result["multimedia"].Children()
+
+                
+                DataFeed feed = new DataFeed
+                {
+                    Link = new Url((string)result["url"]),
+                    Title = (string) result["title"],
+                    PublishTime = DateTime.Parse((string)result["published_date"]),
+                    Source = (string) result["source"],
+                    Image = new Url((string) result[""])
+                }
+            }
         }
-
-        
     }
 }

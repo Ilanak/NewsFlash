@@ -7,6 +7,7 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Threading.Tasks;
 using DataFeedsService.faroo;
+using OpenTextSummarizer;
 
 namespace DataFeedsService
 {
@@ -47,7 +48,23 @@ namespace DataFeedsService
                 }
             }
 
+            results.ForEach(f => EnrichWithConcepts(f));
             return results.ToArray();
+        }
+
+        private DataFeed EnrichWithConcepts(DataFeed result)
+        {
+
+             var summary = Summarizer.Summarize(new SummarizerArguments()
+                                               {
+                                                   DictionaryLanguage = "en",
+                                                   DisplayLines = 1,
+                                                   InputString = result.Title + " " + result.Text
+                                               });
+            result.Concepts = summary.Concepts.ToArray();
+
+            return result;
+            
         }
     }
 }
