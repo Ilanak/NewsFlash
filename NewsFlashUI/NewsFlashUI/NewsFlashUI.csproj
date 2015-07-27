@@ -111,6 +111,7 @@
     <Content Include="Content\food2.jpg" />
     <Content Include="Content\food3.jpg" />
     <Content Include="Content\food4.jpg" />
+    <Content Include="Content\slideshow.css" />
     <Content Include="Global.asax" />
     <Content Include="Main.aspx" />
     <Content Include="scripts\ai.0.15.0-build32981.js" />
