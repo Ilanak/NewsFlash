@@ -7,6 +7,7 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Threading.Tasks;
 using DataFeedsService.faroo;
+using DataFeedsService.Feeds;
 using OpenTextSummarizer;
 
 namespace DataFeedsService
@@ -19,7 +20,8 @@ namespace DataFeedsService
         private const int MaxResults = 50;
         private readonly static IDataFeedApi[] dataFeeds = 
         {
-            new NewYorkTimesParser(), 
+            new NewYorkTimesParser(),
+            new Alchemy(), 
         };
 
         public async Task<DataFeed[]> GetFeedsAsync(string topic)

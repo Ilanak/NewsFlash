@@ -30,8 +30,9 @@ namespace DataFeedsService.Feeds
                 String.Format(
                     "/GetNews?apikey={0}&return={1}&start={2}&end={3}&q.enriched.url.taxonomy.taxonomy_.label={4}&count=25&outputMode=json",
                     apiKey,returnValues,start,end,subject);
-            HttpResponseMessage response = await ApiHandler.GetResponseAsync(ApiBaseUrl, requestParameters);
-  
+            string response = await ApiHandler.GetResponseAsync(ApiBaseUrl, requestParameters);
+
+
 
             return response;
         }
