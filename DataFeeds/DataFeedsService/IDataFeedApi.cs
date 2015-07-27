@@ -8,6 +8,6 @@ namespace DataFeedsService
 {
     interface IDataFeedApi
     {
-        DataFeed[] GetFeeds(string topic, int maxResults, int queryPeriodInHours);
+        DataFeed[] GetFeeds(string topic, int maxResults, DateTime queryStartTime);
     }
 }
