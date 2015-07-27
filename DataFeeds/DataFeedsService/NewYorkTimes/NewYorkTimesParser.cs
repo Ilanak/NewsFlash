@@ -20,11 +20,10 @@ namespace DataFeedsService.faroo
         public DataFeed[] GetFeeds(string topic, int maxResults, DateTime queryStartTime)
         {
             string nytTopic = topicTranslator[topic];
-            string url = string.Format(urlTemplate, nytTopic, maxResults);   
+            int periodInHours = (DateTime.Now - queryStartTime).Hours;
+            string url = string.Format(urlTemplate, nytTopic, periodInHours, maxResults);   
 
 
         }
-
-        
     }
 }
