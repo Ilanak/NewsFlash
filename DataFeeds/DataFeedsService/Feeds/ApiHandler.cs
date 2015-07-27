@@ -8,7 +8,7 @@ namespace DataFeedsService.Feeds
 {
     public class ApiHandler
     {
-        public static async Task<HttpResponseMessage> GetResponseAsync(string BaseUrl, string reqParams)
+        public static async Task<string> GetResponseAsync(string BaseUrl, string reqParams)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -20,7 +20,7 @@ namespace DataFeedsService.Feeds
 
                 if (response.IsSuccessStatusCode)
                 {
-                    return response;
+                    return ContentToString(response.Content);
                 }
                 else
                 {
@@ -28,6 +28,12 @@ namespace DataFeedsService.Feeds
                     return null;
                 }
             }
-        } 
+        }
+
+        public static string ContentToString(HttpContent httpContent)
+        {
+            var readAsStringAsync = httpContent.ReadAsStringAsync();
+            return readAsStringAsync.Result;
+        }
     }
 }

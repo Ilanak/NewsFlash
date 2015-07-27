@@ -13,11 +13,11 @@ namespace DataFeedsService.Feeds
             DataFeed item = new DataFeed();
             string ApiBaseUrl = "http://api.feedzilla.com/";
             string requestParameters = "/v1/categories/26/subcategories/1303/articles.json";
-            Task<HttpResponseMessage> response = ApiHandler.GetResponseAsync(ApiBaseUrl, requestParameters);
+            //Task<HttpResponseMessage> response = ApiHandler.GetResponseAsync(ApiBaseUrl, requestParameters);
 
 
 
-            return response;
+            return null;
         }
     }
 }

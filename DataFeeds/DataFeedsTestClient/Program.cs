@@ -13,7 +13,7 @@ namespace DataFeedsTestClient
         {
             var client = new ServiceReference1.DataFeedsClient();
             var channel = client.ChannelFactory.CreateChannel();
-            var feeds = channel.GetFeedsAsync("war!").Result;
+            var feeds = channel.GetFeedsAsync("s1").Result;
 
             foreach (DataFeed feed in feeds)
             {
