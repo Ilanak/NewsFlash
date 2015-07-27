@@ -2,6 +2,9 @@
 using System.Runtime.Serialization;
 using System.Security.Policy;
 using System.ServiceModel;
+using System.ServiceModel.Web;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DataFeedsService
 {
@@ -9,7 +12,7 @@ namespace DataFeedsService
     public interface IDataFeeds
     {
         [OperationContract]
-        DataFeed[] GetFeeds(string topic);
+        Task<DataFeed[]> GetFeedsAsync(string topic);
     }
 
     [DataContract]
@@ -25,7 +28,7 @@ namespace DataFeedsService
         public string Text { get; set; }
 
         [DataMember]
-        public string[] Keywords { get; set; }
+        public string[] Concepts { get; set; }
 
         [DataMember]
         public DateTime PublishTime { get; set; }
