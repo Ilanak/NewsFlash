@@ -21,9 +21,9 @@ namespace DataFeedsService.faroo
         public Task<DataFeed[]> GetFeedsAsync(string topic, int maxResults, DateTime queryStartTime)
         {
             string nytTopic = topicTranslator[topic];
-            string url = string.Format(urlTemplate, nytTopic, maxResults);   
+            string url = string.Format(urlTemplate, nytTopic, maxResults);
 
-
+            return Task.FromResult(new DataFeed[0]);
         }
 
         

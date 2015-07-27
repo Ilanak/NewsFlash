@@ -6,6 +6,7 @@ using System.Security.Policy;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DataFeedsService
 {
@@ -13,7 +14,7 @@ namespace DataFeedsService
     public interface IDataFeeds
     {
         [OperationContract]
-        DataFeed[] GetFeeds(string topic);
+        Task<DataFeed[]> GetFeedsAsync(string topic);
     }
 
     [DataContract]

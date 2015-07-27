@@ -3,7 +3,7 @@
   <Role name="DataFeedsService">
     <Instances count="1" />
     <ConfigurationSettings>
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=alonads;AccountKey=CrKmc5f/2fYCxoX4kkXV/sRp2XFBvquNIak9ZV70AD+LW6UzbpA4JhdErXDNyjBCmlhq7xdFFNG3ZkKRDqSGNQ==" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>
