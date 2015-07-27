@@ -2,12 +2,13 @@ using System;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 
 namespace DataFeedsService.Feeds
 {
     public class ApiHandler
     {
-        public static HttpResponseMessage GetResponse(string BaseUrl, string reqParams)
+        public static async Task<HttpResponseMessage> GetResponseAsync(string BaseUrl, string reqParams)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -15,7 +16,7 @@ namespace DataFeedsService.Feeds
                 client.BaseAddress = new Uri(BaseUrl);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.GetAsync(reqParams).Result;
+                HttpResponseMessage response = await client.GetAsync(reqParams);
 
                 if (response.IsSuccessStatusCode)
                 {

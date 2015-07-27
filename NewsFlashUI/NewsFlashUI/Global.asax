@@ -1,0 +1,1 @@
+<%@ Application Codebehind="Global.asax.cs" Inherits="NewsFlashUI.Global_asax" Language="C#" %>
