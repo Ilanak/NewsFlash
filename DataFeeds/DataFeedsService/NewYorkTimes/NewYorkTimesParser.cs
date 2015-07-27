@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Xml.Schema;
 
@@ -17,14 +18,13 @@ namespace DataFeedsService.faroo
             {"s1","t1"}
         };
 
-        public DataFeed[] GetFeeds(string topic, int maxResults, DateTime queryStartTime)
+        public Task<DataFeed[]> GetFeedsAsync(string topic, int maxResults, DateTime queryStartTime)
         {
             string nytTopic = topicTranslator[topic];
-            string url = string.Format(urlTemplate, nytTopic, maxResults);   
+            int periodInHours = (DateTime.Now - queryStartTime).Hours;
+            string url = string.Format(urlTemplate, nytTopic, periodInHours, maxResults);   
 
 
         }
-
-        
     }
 }
