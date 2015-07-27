@@ -22,13 +22,13 @@ namespace DataFeedsService
                 throw new ArgumentNullException("topic");
             }
 
-            var result = new List<DataFeed>();
-            //while (result.Count < MaxResults)
-            //{
-                
-            //}
+            var results = new List<DataFeed>();
+            while (results.Count < MaxResults)
+            {
 
-            return result.ToArray();
+            }
+
+            return results.ToArray();
         }
     }
 }
