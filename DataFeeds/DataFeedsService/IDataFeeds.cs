@@ -25,8 +25,8 @@ namespace DataFeedsService
         public string Text { get; set; }
 
         [DataMember]
-        public string[] Keywords { get; set; }
-
+        public string[] Concepts { get; set; }
+        
         [DataMember]
         public DateTime PublishTime { get; set; }
 
