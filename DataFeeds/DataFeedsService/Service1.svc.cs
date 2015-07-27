@@ -8,26 +8,27 @@ using System.Text;
 
 namespace DataFeedsService
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
-    public class Service1 : IService1
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "DataFeeds" in code, svc and config file together.
+    // NOTE: In order to launch WCF Test Client for testing this service, please select DataFeeds.svc or DataFeeds.svc.cs at the Solution Explorer and start debugging.
+    public class DataFeeds : IDataFeeds
     {
-        public string GetData(int value)
-        {
-            return string.Format("You entered: {0}", value);
-        }
+        private const int MaxResults = 50;
+        private static IDataFeedApi[] dataFeeds = new IDataFeedApi[] {};
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public DataFeed[] GetFeeds(string topic)
         {
-            if (composite == null)
+            if (string.IsNullOrEmpty(topic))
             {
-                throw new ArgumentNullException("composite");
+                throw new ArgumentNullException("topic");
             }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+
+            var result = new List<DataFeed>();
+            //while (result.Count < MaxResults)
+            //{
+                
+            //}
+
+            return result.ToArray();
         }
     }
 }
