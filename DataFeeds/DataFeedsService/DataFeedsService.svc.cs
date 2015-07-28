@@ -51,7 +51,7 @@ namespace DataFeedsService
                 {
                     DictionaryLanguage = "en",
                     DisplayLines = 1,
-                    InputString = string.Format("{0}. {1}", feed.Title, feed.Text)
+                    InputString = feed.Title
                 };
 
                 var summary = Summarizer.Summarize(args);
