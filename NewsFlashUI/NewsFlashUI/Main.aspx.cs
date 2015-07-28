@@ -36,8 +36,9 @@ namespace NewsFlashUI
 
                 var result = client.Execute(request);
 
-
-                var feeds = JsonConvert.DeserializeObject<DataFeed[]>(result.Content);
+            
+               var feeds = JsonConvert.DeserializeObject<DataFeed[]>(result.Content);
+                feeds = feeds.Where((f) => f != null).ToArray();
 
                 IEnumerableExtensions.ForEach(feeds, f =>
                 {
@@ -79,7 +80,7 @@ namespace NewsFlashUI
             catch (Exception ex)
             {
                 Console.Write(ex);
-            }        
+            }
         }
 
         protected void btnBusiness_Click(object sender, EventArgs e)

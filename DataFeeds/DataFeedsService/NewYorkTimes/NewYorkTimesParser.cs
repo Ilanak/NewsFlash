@@ -1,19 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
 using System.Security.Policy;
-using System.ServiceModel;
 using System.Threading.Tasks;
-using System.Web;
-using System.Xml.Schema;
 using DataFeedsService.Feeds;
-using Microsoft.SqlServer.Server;
 using Newtonsoft.Json.Linq;
 
 namespace DataFeedsService.NewYorkTimes
 {
-    public class NewYorkTimesParser : IDataFeedApi
+    public class NewYorkTimesParser : IDataFeedSource
     {
 
         private const string domain = "http://api.nytimes.com/"; 
@@ -26,7 +20,8 @@ namespace DataFeedsService.NewYorkTimes
             {Topic.Fashion, "fashion%20&%20style"},
             {Topic.Technology,"technology"},
             {Topic.Sports,"sports"},
-            {Topic.WorldNews,"world"}
+            {Topic.WorldNews,"world"},
+            {Topic.Food,"food"}
         };
 
         public async Task<DataFeed[]> GetFeedsAsync(Topic topic, int maxResults, DateTime queryStartTime)
@@ -72,7 +67,6 @@ namespace DataFeedsService.NewYorkTimes
                 {
                     var result = jsonResponse["results"][i];
 
-                    JArray multimedaArr = (JArray) result["multimedia"];
                     feed = new DataFeed
                     {
                         Link = (string) result["url"],
@@ -80,7 +74,7 @@ namespace DataFeedsService.NewYorkTimes
                         PublishTime = DateTime.Parse((string) result["created_date"]),
                         Source = (string) result["source"],
                         Text = (string) result["abstract"],
-                        Image = GetUrlOfLargestImage(multimedaArr)
+                        Image = GetUrlOfLargestImage(result)
                     };
                 }
                 catch(Exception e)
@@ -93,31 +87,35 @@ namespace DataFeedsService.NewYorkTimes
             return feeds.ToArray();
         }
 
-        private string GetUrlOfLargestImage(JArray multimedaArr)
-        {
+        private string GetUrlOfLargestImage(JToken result)
+        { 
             string largestUrl = null;
             int largestSize = 0;
-            if (multimedaArr == null || multimedaArr.Count == 0)
+
+            try
             {
-                return null;
-            }
-
-            for (int i = 0; i < multimedaArr.Count; i++)
-            {
-                if ((string) multimedaArr[i]["type"] != "image")
+                JArray multimedaArr = (JArray)result["multimedia"];
+                if (multimedaArr == null || multimedaArr.Count == 0)
                 {
-                    continue;
+                    return null;
                 }
-
-                int currentSize = (int) multimedaArr[i]["height"] * (int) multimedaArr[i]["width"];
-                if (currentSize > largestSize)
+                
+                for (int i = 0; i < multimedaArr.Count; i++)
                 {
-                    largestSize = currentSize;
-                    largestUrl = (string)multimedaArr[i]["url"];
+                    if ((string) multimedaArr[i]["type"] != "image")
+                    {
+                        continue;
+                    }
+
+                    int currentSize = (int) multimedaArr[i]["height"]*(int) multimedaArr[i]["width"];
+                    if (currentSize > largestSize)
+                    {
+                        largestSize = currentSize;
+                        largestUrl = (string) multimedaArr[i]["url"];
+                    }
                 }
             }
-
-            if (largestUrl == null)
+            catch (Exception e)
             {
                 return null;
             }
