@@ -7,7 +7,7 @@ using Newtonsoft.Json.Linq;
 
 namespace DataFeedsService.Feeds
 {
-    public class Alchemy : IDataFeedApi
+    public class Alchemy : IDataFeedSource
     {
         DataFeed[] results = new DataFeed[0];
 

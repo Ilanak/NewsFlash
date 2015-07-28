@@ -102,10 +102,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AzureLocalStorageTraceListener.cs" />
+    <Compile Include="BingSearchContainer.cs" />
     <Compile Include="NewYorkTimes\NewYorkTimesParser.cs" />
     <Compile Include="Feeds\Alchemy.cs" />
     <Compile Include="Feeds\ApiHandler.cs" />
-    <Compile Include="IDataFeedApi.cs" />
+    <Compile Include="IDataFeedSource.cs" />
     <Compile Include="DataFeedsService.svc.cs">
       <DependentUpon>DataFeedsService.svc</DependentUpon>
     </Compile>
