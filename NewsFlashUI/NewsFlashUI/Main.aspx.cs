@@ -28,16 +28,14 @@ namespace NewsFlashUI
         {
             try
             {
-                // DataFeedsService.svc/GetFeeds?Topic=s1
                 var client = new RestClient("http://datafeeds.cloudapp.net/");
 
                 var request = new RestRequest("DataFeedsService.svc/GetFeeds", Method.GET);
                 request.AddParameter("Topic", topic);
 
                 var result = client.Execute(request);
-
             
-               var feeds = JsonConvert.DeserializeObject<DataFeed[]>(result.Content);
+                var feeds = JsonConvert.DeserializeObject<DataFeed[]>(result.Content);
                 feeds = feeds.Where((f) => f != null).ToArray();
 
                 IEnumerableExtensions.ForEach(feeds, f =>

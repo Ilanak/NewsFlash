@@ -89,7 +89,6 @@
                                                 <ImageArea Width="100%" Height="600" BackColor="LightGray" />
                                             </Styles>
                                             <ItemTextTemplate>
-                                                <textarea></textarea>
                                                 <h3 class='isdemoH3'><%# Eval("Text") %></a></h3>
                                             </ItemTextTemplate>
                                         </dx:ASPxImageSlider>
