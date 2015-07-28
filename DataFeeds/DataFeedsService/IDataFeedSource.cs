@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataFeedsService
 {
-    internal interface IDataFeedApi
+    internal interface IDataFeedSource
     {
         Task<DataFeed[]> GetFeedsAsync(Topic topic, int maxResults, DateTime queryStartTime);
     }

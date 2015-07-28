@@ -7,7 +7,7 @@ using Newtonsoft.Json.Linq;
 
 namespace DataFeedsService.NewYorkTimes
 {
-    public class NewYorkTimesParser : IDataFeedApi
+    public class NewYorkTimesParser : IDataFeedSource
     {
 
         private const string domain = "http://api.nytimes.com/"; 
