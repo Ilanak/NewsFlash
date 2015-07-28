@@ -65,7 +65,7 @@
                     <dx:ASPxImageSlider ID="ASPxImageSlider1" runat="server" ClientInstanceName="ImageSlider" SettingsImageArea-AnimationType="None" Visible="false"
                                             EnableViewState="False" EnableTheming="False" NavigateUrlFormatString="javascript:void({0});" ShowNavigationBar="false">
                                             <SettingsImageArea NavigationButtonVisibility="None" ImageSizeMode="FitProportional" ItemTextVisibility="Always" EnableLoopNavigation="true" />
-                                            <SettingsSlideShow AutoPlay="true" StopPlayingWhenPaging="false" PausePlayingWhenMouseOver="false" PlayPauseButtonVisibility="Faded" Interval="300"></SettingsSlideShow>
+                                            <SettingsSlideShow AutoPlay="true" StopPlayingWhenPaging="false" PausePlayingWhenMouseOver="false" PlayPauseButtonVisibility="Faded" Interval="250"></SettingsSlideShow>
                                             <Styles>
                                                 <ImageArea Width="100%" Height="600" BackColor="LightGray" />
                                             </Styles>
