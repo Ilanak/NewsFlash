@@ -6,7 +6,7 @@ using Newtonsoft.Json.Linq;
 
 namespace DataFeedsService.Feeds
 {
-    public class Alchemy : IDataFeedApi
+    public class Alchemy : IDataFeedSource
     {
         
         private readonly Dictionary<Topic, string> topicTranslator = new Dictionary<Topic, string>()
@@ -15,7 +15,8 @@ namespace DataFeedsService.Feeds
                     {Topic.Fashion, "styl%20and%20fashion"},
                     {Topic.Technology," technology%20and%20computing"},
                     {Topic.Sports,"sports"},
-                    {Topic.WorldNews,"newss"}
+                    {Topic.WorldNews,"news"},
+                    {Topic.Food,"food%20and%20drink"} 
                 };
 
         public async Task<DataFeed[]> GetFeedsAsync(Topic topic, int maxResults, DateTime startTime)
