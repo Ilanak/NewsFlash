@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Security.Policy;
-using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
 using System.Threading.Tasks;
 using DataFeedsService.Feeds;
 using DataFeedsService.NewYorkTimes;
@@ -22,7 +18,7 @@ namespace DataFeedsService
         private readonly static IDataFeedApi[] dataFeeds = 
         {
             new NewYorkTimesParser(),
-            //new Alchemy(), 
+            new Alchemy(), 
         };
 
         public async Task<DataFeed[]> GetFeedsAsync(Topic topic)

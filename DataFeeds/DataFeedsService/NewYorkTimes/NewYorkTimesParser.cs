@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
 using System.Security.Policy;
-using System.ServiceModel;
 using System.Threading.Tasks;
-using System.Web;
-using System.Xml.Schema;
 using DataFeedsService.Feeds;
-using Microsoft.SqlServer.Server;
 using Newtonsoft.Json.Linq;
 
 namespace DataFeedsService.NewYorkTimes
