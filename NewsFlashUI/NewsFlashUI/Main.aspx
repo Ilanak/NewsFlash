@@ -21,58 +21,56 @@
     <form id="form1" runat="server">
         <table style="width: 100%">
             <tr id="header" style="height: 50px; background-color: white; text-align: left;">
-                <td style="font-family: 'Segoe UI'; color: darkgray; font-weight: bold; text-align: left; vertical-align: middle">
+                <td style="font-family: 'Segoe UI'; font-weight: bold; text-align: left; vertical-align: middle">
                     <img src="Content/NewsFlash.png" height="50px" />&nbsp;NewsFlash
                 </td>
-                <td style="width: 30%; font-family: 'Segoe UI'; color: darkgray; text-wrap: avoid; text-align: right">Hello, Ilana!</td>
+                <td style="width: 30%; font-family: 'Segoe UI'; text-wrap: avoid; text-align: right">Hello, Ilana!</td>
             </tr>
-            <tr id="trCategories" style="background-color: lightgray">
+            <tr id="trCategories">
                 <td colspan="2">
                     <asp:Table runat="server" ID="tblCategories" HorizontalAlign="Center">
                         <asp:TableRow>
                             <asp:TableCell>
-                                                    <asp:Button runat="server" ID="btnBusiness" Width="150px" Height="150px" ForeColor="White" BackColor="RoyalBlue" Text="Business" OnClick="btnBusiness_Click" />
+                                <asp:Button runat="server" ID="btnBusiness" Width="150px" Height="150px" ForeColor="White" BackColor="#107c10" Text="Business" OnClick="btnBusiness_Click" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
                             </asp:TableCell>
                             <asp:TableCell>&nbsp;&nbsp;
                             </asp:TableCell>
                             <asp:TableCell>
-                                <asp:Button runat="server" ID="btnfashion" Text="Fashion" OnClick="btnBusiness_Click" Width="150px" Height="150px" ForeColor="White" BackColor="Teal" />
+                                <asp:Button runat="server" ID="btnfashion" Text="Fashion" OnClick="btnBusiness_Click" Width="150px" Height="150px" ForeColor="White" BackColor="#b4009e" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
                             </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
                             <asp:TableCell>
-                                <asp:Button runat="server" ID="Button1" Text="Sports" OnClick="btnBusiness_Click" Width="150px" Height="150px" ForeColor="White" BackColor="Magenta" />
-
+                                <asp:Button runat="server" ID="Button1" Text="Sports" OnClick="btnBusiness_Click" Width="150px" Height="150px" ForeColor="White" BackColor="#ff8000" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
                             </asp:TableCell>
                             <asp:TableCell>&nbsp;&nbsp;
                             </asp:TableCell>
                             <asp:TableCell>
-                                <asp:Button runat="server" ID="Button2" Text="Technology" OnClick="btnBusiness_Click" Width="150px" Height="150px" ForeColor="White" BackColor="OrangeRed" />
+                                <asp:Button runat="server" ID="Button2" Text="Technology" OnClick="btnBusiness_Click" Width="150px" Height="150px" ForeColor="White" BackColor="#e81123" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
                             </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
                             <asp:TableCell>
-                                <asp:Button runat="server" ID="Button3" Text="World News" OnClick="btnBusiness_Click" Width="150px" Height="150px" ForeColor="White" BackColor="PaleTurquoise" />
-
+                                <asp:Button runat="server" ID="Button3" Text="World" OnClick="btnBusiness_Click" Width="150px" Height="150px" ForeColor="White" BackColor="#5c2d91" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
                             </asp:TableCell>
                             <asp:TableCell>&nbsp;&nbsp;
                             </asp:TableCell>
                             <asp:TableCell>
-                                <asp:Button runat="server" ID="Button4" Text="Food" OnClick="btnBusiness_Click" Width="150px" Height="150px" ForeColor="White" BackColor="RoyalBlue" />
+                                <asp:Button runat="server" ID="Button4" Text="Food" OnClick="btnBusiness_Click" Width="150px" Height="150px" ForeColor="White" BackColor="#0078d7" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
                             </asp:TableCell>
                         </asp:TableRow>
                     </asp:Table>
                     <dx:ASPxImageSlider ID="ASPxImageSlider1" runat="server" ClientInstanceName="ImageSlider" SettingsImageArea-AnimationType="None" Visible="false"
-                                            EnableViewState="False" EnableTheming="False" NavigateUrlFormatString="javascript:void({0});" ShowNavigationBar="false">
-                                            <SettingsImageArea NavigationButtonVisibility="None" ImageSizeMode="FitProportional" ItemTextVisibility="Always" EnableLoopNavigation="true" />
-                                            <SettingsSlideShow AutoPlay="true" StopPlayingWhenPaging="false" PausePlayingWhenMouseOver="false" PlayPauseButtonVisibility="Faded" Interval="300"></SettingsSlideShow>
-                                            <Styles>
-                                                <ImageArea Width="100%" Height="600" BackColor="LightGray" />
-                                            </Styles>
-                                            <ItemTextTemplate>
-                                                <h3 class='isdemoH3'><%# Eval("Text") %></a></h3>
-                                            </ItemTextTemplate>
-                                        </dx:ASPxImageSlider>
+                        EnableViewState="False" EnableTheming="False" NavigateUrlFormatString="javascript:void({0});" ShowNavigationBar="false">
+                        <SettingsImageArea NavigationButtonVisibility="None" ImageSizeMode="FitProportional" ItemTextVisibility="Always" EnableLoopNavigation="true" />
+                        <SettingsSlideShow AutoPlay="true" StopPlayingWhenPaging="false" PausePlayingWhenMouseOver="false" PlayPauseButtonVisibility="Faded" Interval="300"></SettingsSlideShow>
+                        <Styles>
+                            <ImageArea Width="100%" Height="600" BackColor="LightGray" />
+                        </Styles>
+                        <ItemTextTemplate>
+                            <h3 class='isdemoH3'><%# Eval("Text") %></a></h3>
+                        </ItemTextTemplate>
+                    </dx:ASPxImageSlider>
                 </td>
             </tr>
             <tr id="footer" style="height: 40px; background-color: white">
