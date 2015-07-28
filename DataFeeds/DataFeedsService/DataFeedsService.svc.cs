@@ -7,7 +7,8 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using System.Threading.Tasks;
-using DataFeedsService.faroo;
+using DataFeedsService.Feeds;
+using DataFeedsService.NewYorkTimes;
 using OpenTextSummarizer;
 
 namespace DataFeedsService
@@ -20,16 +21,12 @@ namespace DataFeedsService
         private const int MaxResults = 50;
         private readonly static IDataFeedApi[] dataFeeds = 
         {
-            new NewYorkTimesParser(), 
+            new NewYorkTimesParser(),
+            //new Alchemy(), 
         };
 
-        public async Task<DataFeed[]> GetFeedsAsync(string topic)
+        public async Task<DataFeed[]> GetFeedsAsync(Topic topic)
         {
-            if (string.IsNullOrEmpty(topic))
-            {
-                throw new ArgumentNullException("topic");
-            }
-
             DateTime queryStartTime = DateTime.UtcNow - TimeSpan.FromHours(QueryPeriodInHours);
             DataFeed[][] allFeeds = await Task.WhenAll(dataFeeds.Select(feed => feed.GetFeedsAsync(topic, MaxResults, queryStartTime)));
             IEnumerable<IGrouping<Url, DataFeed>> groupedFeeds =

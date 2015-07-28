@@ -12,9 +12,25 @@ namespace DataFeedsService
     public interface IDataFeeds
     {
         [OperationContract]
-        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "GetFeeds?Topic={topic}")]
-        Task<DataFeed[]> GetFeedsAsync(string topic);
+        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "GetFeedsAsync?Topic={topic}")]
+        Task<DataFeed[]> GetFeedsAsync(Topic topic);
     }
+
+    [DataContract]
+    public enum Topic
+    {
+        [EnumMember]
+        Business,
+        [EnumMember]
+        Fashion,
+        [EnumMember]
+        Technology,
+        [EnumMember]
+        Sports,
+        [EnumMember]
+        WorldNews
+    }
+
 
     [DataContract]
     public class DataFeed

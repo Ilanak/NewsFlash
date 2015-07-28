@@ -14,7 +14,7 @@ namespace DataFeedsTestClient
 
             ChannelFactory<IDataFeeds> factory = new ChannelFactory<IDataFeeds>("DataFeeds");
             var proxy = factory.CreateChannel();
-            var feeds = proxy.GetFeedsAsync("s1").Result;
+            var feeds = proxy.GetFeedsAsync(Topic.Sports).Result;
             ((IDisposable)proxy).Dispose();
 
 

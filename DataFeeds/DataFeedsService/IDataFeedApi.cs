@@ -8,6 +8,6 @@ namespace DataFeedsService
 {
     internal interface IDataFeedApi
     {
-        Task<DataFeed[]> GetFeedsAsync(string topic, int maxResults, DateTime queryStartTime);
+        Task<DataFeed[]> GetFeedsAsync(Topic topic, int maxResults, DateTime queryStartTime);
     }
 }
