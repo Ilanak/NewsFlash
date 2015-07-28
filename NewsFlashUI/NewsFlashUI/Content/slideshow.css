@@ -1,12 +1,12 @@
 ﻿.dxisControl .dxis-itemTextArea {
-    
-    top: 68%;
-    left: 23%;
+    top: -10%;
+    left: 40%;
     bottom: auto;
     width: 285px;
-    padding: 15px 16px 21px;
-    color: #fff;
-    height: 132px;
+    padding: 7px 16px 21px;
+    height: 80px;
+    color: transparent;
+    background-color: transparent;
 }
 
 .dxisControl .dxis-itemTextArea a {
@@ -23,10 +23,7 @@
 .dxisControl .dxis-itemTextArea > p {
     margin-bottom: 0 !important;
 }
-.dxisControl .dxis-nbDotsBottom {
-    padding: 0;
-    margin-top: -25px;
-}
+
 .dxisControl .dxis-nbDotsBottom .dxis-nbSlidePanel {
     right: 15px;
     left: auto !important;
@@ -34,8 +31,12 @@
     -webkit-transform: matrix(1, 0, 0, 1, 0, 0) !important;
 }
 .isdemoH3 {
-    font-size: 20px !important;
-    color: white;
+    font-size: 60px !important;
+    color: black;
     padding-bottom: 9px;
     text-align: center;
+}
+
+.dxis-item img{
+    opacity:0.7;
 }

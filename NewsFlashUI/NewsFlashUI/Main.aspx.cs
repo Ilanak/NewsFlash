@@ -17,24 +17,27 @@ namespace NewsFlashUI
 {
     public partial class Main : System.Web.UI.Page
     {
-        private Dictionary<string, int> conceptsDic= new Dictionary<string, int>(); 
+        private Dictionary<string, int> conceptsDic = new Dictionary<string, int>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
+        
+        }
+
+        protected void NewsLoad(string topic)
+        {
             try
             {
-
-
                 // DataFeedsService.svc/GetFeeds?Topic=s1
                 var client = new RestClient("http://datafeeds.cloudapp.net/");
 
                 var request = new RestRequest("DataFeedsService.svc/GetFeeds", Method.GET);
-                request.AddParameter("Topic", "Business");
+                request.AddParameter("Topic", topic);
 
                 var result = client.Execute(request);
 
-            
-               var feeds = JsonConvert.DeserializeObject<DataFeed[]>(result.Content);
+
+                var feeds = JsonConvert.DeserializeObject<DataFeed[]>(result.Content);
 
                 IEnumerableExtensions.ForEach(feeds, f =>
                 {
@@ -62,20 +65,33 @@ namespace NewsFlashUI
                     {
                         string[] words = feed.Title.Split(' ');
                         string filePath = feed.Image.ToString();
+
+                        ASPxImageSlider1.Items.Add(filePath, string.Empty, feed.Link, string.Empty);
                         for (int j = 0; j < words.Length; j++)
                         {
-                            ASPxImageSlider1.Items.Add(filePath, string.Empty, feed.Link, concept.Key, words[j]);
+                            ASPxImageSlider1.Items.Add(filePath, string.Empty, feed.Link, words[j]);
 
                         }
-                        ASPxImageSlider1.Items.Add("Content/Black.png");
-                        ASPxImageSlider1.Items.Add("Content/Black.png");
+                        ASPxImageSlider1.Items.Add(filePath, string.Empty, feed.Link, string.Empty);
                     }
                 }
             }
             catch (Exception ex)
             {
                 Console.Write(ex);
+            }        
+        }
+
+        protected void btnBusiness_Click(object sender, EventArgs e)
+        {
+            Button bt = sender as Button;
+            if (bt == null)
+            {
+                return;
             }
+
+            ASPxPageControl1.ActiveTabIndex = 1;
+            NewsLoad(bt.Text);
         }
     }
 
