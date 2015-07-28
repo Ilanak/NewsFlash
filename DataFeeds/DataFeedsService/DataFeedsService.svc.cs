@@ -29,7 +29,7 @@ namespace DataFeedsService
         {
             DateTime queryStartTime = DateTime.UtcNow - TimeSpan.FromHours(QueryPeriodInHours);
             DataFeed[][] allFeeds = await Task.WhenAll(dataFeeds.Select(feed => feed.GetFeedsAsync(topic, MaxResults, queryStartTime)));
-            IEnumerable<IGrouping<Url, DataFeed>> groupedFeeds =
+            IEnumerable<IGrouping<string, DataFeed>> groupedFeeds =
                 allFeeds
                     .SelectMany(feed => feed)
                     .GroupBy(feed => feed.Link);

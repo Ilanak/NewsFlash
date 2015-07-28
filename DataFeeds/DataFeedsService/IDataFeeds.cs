@@ -36,7 +36,7 @@ namespace DataFeedsService
     public class DataFeed
     {
         [DataMember]
-        public Url Link { get; set; }
+        public string Link { get; set; }
 
         [DataMember]
         public string Title { get; set; }
@@ -54,6 +54,6 @@ namespace DataFeedsService
         public string Source { get; set; }
 
         [DataMember]
-        public Url Image { get; set; }
+        public string Image { get; set; }
     }
 }

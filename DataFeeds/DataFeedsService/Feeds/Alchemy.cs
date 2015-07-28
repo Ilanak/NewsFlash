@@ -71,7 +71,7 @@ namespace DataFeedsService.Feeds
                 var title = (string)result["source"]["enriched"]["url"]["title"];
                 DataFeed feed = new DataFeed
                 {
-                    Link = new Url((string)result["source"]["enriched"]["url"]["url"]),
+                    Link =(string)result["source"]["enriched"]["url"]["url"],
                     Title = title,
                     PublishTime = UnixTimeStampToDateTime((string)result["timestamp"]),
                     Source = getSource(title),
