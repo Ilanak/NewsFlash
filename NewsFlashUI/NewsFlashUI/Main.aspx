@@ -103,6 +103,11 @@
                 <td colspan="2" style="color: darkgray; font-family: 'Segoe UI'">Copyright NewsFlash 2015. All rights reserved.</td>
             </tr>
         </table>
+        <h2 class="titles">The whole shabang</h2>
+        <div>
+            <ul id="uList" runat="server">
+            </ul>
+        </div>
     </form>
 </body>
 </html>

@@ -36,7 +36,16 @@ namespace NewsFlashUI
                 var result = client.Execute(request);
             
                 var feeds = JsonConvert.DeserializeObject<DataFeed[]>(result.Content);
+                
                 feeds = feeds.Where((f) => f != null).ToArray();
+
+                foreach (var feed in feeds)
+                {
+                    uList.InnerHtml += "<li>" +
+                                       "<div style='background-image: url(\"" + feed.Image + "\");'></div>" +
+                                       "<a href=" + feed.Link + " >" + feed.Title + "<a>" +
+                                       "</li>";
+                }
 
                 IEnumerableExtensions.ForEach(feeds, f =>
                 {
