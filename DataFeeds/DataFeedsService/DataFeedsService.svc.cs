@@ -20,7 +20,7 @@ namespace DataFeedsService
         private const int MaxResults = 50;
         private readonly static IDataFeedApi[] dataFeeds = 
         {
-            new NewYorkTimesParser(),
+           // new NewYorkTimesParser(),
             new Alchemy(), 
         };
 
