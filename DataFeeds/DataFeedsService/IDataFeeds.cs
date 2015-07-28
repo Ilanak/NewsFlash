@@ -12,7 +12,7 @@ namespace DataFeedsService
     public interface IDataFeeds
     {
         [OperationContract]
-        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "GetFeedsAsync?Topic={topic}")]
+        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "GetFeeds?Topic={topic}")]
         Task<DataFeed[]> GetFeedsAsync(Topic topic);
     }
 
