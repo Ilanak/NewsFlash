@@ -30,32 +30,32 @@
                     <asp:Table runat="server" ID="tblCategories" HorizontalAlign="Center">
                         <asp:TableRow>
                             <asp:TableCell>
-                                <asp:Button runat="server" ID="btnBusiness" Width="150px" Height="150px" ForeColor="White" BackColor="#107c10" Text="Business" OnClick="btnBusiness_Click" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
+                                <asp:Button runat="server" ID="btnBusiness" Width="200px" height="200px" ForeColor="White" BackColor="#107c10" Text="Business" OnClick="btnBusiness_Click" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
                             </asp:TableCell>
                             <asp:TableCell>&nbsp;&nbsp;
                             </asp:TableCell>
                             <asp:TableCell>
-                                <asp:Button runat="server" ID="btnfashion" Text="Fashion" OnClick="btnBusiness_Click" Width="150px" Height="150px" ForeColor="White" BackColor="#b4009e" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
+                                <asp:Button runat="server" ID="btnfashion" Text="Fashion" OnClick="btnBusiness_Click" Width="200px" Height="200px" ForeColor="White" BackColor="#b4009e" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
                             </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
                             <asp:TableCell>
-                                <asp:Button runat="server" ID="Button1" Text="Sports" OnClick="btnBusiness_Click" Width="150px" Height="150px" ForeColor="White" BackColor="#ff8000" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
+                                <asp:Button runat="server" ID="Button1" Text="Sports" OnClick="btnBusiness_Click" Width="200px" Height="200px" ForeColor="White" BackColor="#ff8000" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
                             </asp:TableCell>
                             <asp:TableCell>&nbsp;&nbsp;
                             </asp:TableCell>
                             <asp:TableCell>
-                                <asp:Button runat="server" ID="Button2" Text="Technology" OnClick="btnBusiness_Click" Width="150px" Height="150px" ForeColor="White" BackColor="#e81123" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
+                                <asp:Button runat="server" ID="Button2" Text="Technology" OnClick="btnBusiness_Click" Width="200px" Height="200px" ForeColor="White" BackColor="#e81123" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
                             </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
                             <asp:TableCell>
-                                <asp:Button runat="server" ID="Button3" Text="World" OnClick="btnBusiness_Click" Width="150px" Height="150px" ForeColor="White" BackColor="#5c2d91" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
+                                <asp:Button runat="server" ID="Button3" Text="World" OnClick="btnBusiness_Click" Width="200px" Height="200px" ForeColor="White" BackColor="#5c2d91" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
                             </asp:TableCell>
                             <asp:TableCell>&nbsp;&nbsp;
                             </asp:TableCell>
                             <asp:TableCell>
-                                <asp:Button runat="server" ID="Button4" Text="Food" OnClick="btnBusiness_Click" Width="150px" Height="150px" ForeColor="White" BackColor="#0078d7" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
+                                <asp:Button runat="server" ID="Button4" Text="Food" OnClick="btnBusiness_Click" Width="200px" Height="200px" ForeColor="White" BackColor="#0078d7" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
                             </asp:TableCell>
                         </asp:TableRow>
                     </asp:Table>
