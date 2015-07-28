@@ -6,7 +6,7 @@ using Newtonsoft.Json.Linq;
 
 namespace DataFeedsService.Feeds
 {
-    public class Alchemy : IDataFeedApi
+    public class Alchemy : IDataFeedSource
     {
         
         private readonly Dictionary<Topic, string> topicTranslator = new Dictionary<Topic, string>()
