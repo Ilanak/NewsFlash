@@ -20,7 +20,8 @@ namespace DataFeedsService.NewYorkTimes
             {Topic.Fashion, "fashion%20&%20style"},
             {Topic.Technology,"technology"},
             {Topic.Sports,"sports"},
-            {Topic.WorldNews,"world"}
+            {Topic.WorldNews,"world"},
+            {Topic.Food,"food"}
         };
 
         public async Task<DataFeed[]> GetFeedsAsync(Topic topic, int maxResults, DateTime queryStartTime)
