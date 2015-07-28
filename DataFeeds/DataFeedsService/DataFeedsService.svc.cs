@@ -6,7 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using System.Threading.Tasks;
-using DataFeedsService.faroo;
+using DataFeedsService.NewYorkTimes;
 using OpenTextSummarizer;
 
 namespace DataFeedsService
@@ -22,12 +22,12 @@ namespace DataFeedsService
             new NewYorkTimesParser(), 
         };
 
-        public async Task<DataFeed[]> GetFeedsAsync(string topic)
+        public async Task<DataFeed[]> GetFeedsAsync(Topic topic)
         {
-            if (string.IsNullOrEmpty(topic))
+            /*if (string.IsNullOrEmpty(topic))
             {
                 throw new ArgumentNullException("topic");
-            }
+            }*/
 
             DateTime queryStartTime = DateTime.UtcNow - TimeSpan.FromHours(QueryPeriodInHours);
             var results = new List<DataFeed>();

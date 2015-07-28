@@ -8,7 +8,7 @@ namespace DataFeedsService.Feeds
     {
         DataFeed[] results = new DataFeed[0];
 
-        public Task<DataFeed[]> GetFeedsAsync(string topic, int maxResults, DateTime time)
+        public Task<DataFeed[]> GetFeedsAsync(Topic topic, int maxResults, DateTime time)
         {
             DataFeed item = new DataFeed();
             string ApiBaseUrl = "http://api.feedzilla.com/";

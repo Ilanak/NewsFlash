@@ -12,8 +12,24 @@ namespace DataFeedsService
     public interface IDataFeeds
     {
         [OperationContract]
-        Task<DataFeed[]> GetFeedsAsync(string topic);
+        Task<DataFeed[]> GetFeedsAsync(Topic topic);
     }
+
+    [DataContract]
+    public enum Topic
+    {
+        [EnumMember]
+        Business,
+        [EnumMember]
+        Fashion,
+        [EnumMember]
+        Technology,
+        [EnumMember]
+        Sports,
+        [EnumMember]
+        WorldNews
+    }
+
 
     [DataContract]
     public class DataFeed
