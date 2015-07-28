@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using Bing;
+using DataFeedsService.Feeds;
 using DataFeedsService.NewYorkTimes;
 using OpenTextSummarizer;
 
@@ -19,7 +20,7 @@ namespace DataFeedsService
         private readonly static IDataFeedSource[] DataFeedSources = 
         {
             new NewYorkTimesParser(),
-            //new Alchemy(), 
+            new Alchemy(), 
         };
 
         public async Task<DataFeed[]> GetFeedsAsync(Topic topic)
@@ -78,7 +79,7 @@ namespace DataFeedsService
             {
                 return feed;
             }
-
+                
             if (feed.Concepts == null)
             {
                 return null;
@@ -97,8 +98,8 @@ namespace DataFeedsService
             if (image != null)
             {
                 feed.Image = image.MediaUrl;
-                return feed;
-            }
+            return feed;
+        }
 
             return null;
         }
