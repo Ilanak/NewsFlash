@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DevExpress.Data.Mask;
 using DevExpress.XtraPrinting.Native;
+using DevExpress.XtraSpreadsheet.Utils;
 using RestSharp;
 using Newtonsoft;
 using Newtonsoft.Json;
@@ -16,7 +17,7 @@ namespace NewsFlashUI
 {
     public partial class Main : System.Web.UI.Page
     {
-        private Dictionary<string, List<DataFeed>> conceptsDic= new Dictionary<string, List<DataFeed>>(); 
+        private Dictionary<string, int> conceptsDic= new Dictionary<string, int>(); 
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,28 +36,40 @@ namespace NewsFlashUI
             
                var feeds = JsonConvert.DeserializeObject<DataFeed[]>(result.Content);
 
-                /*feeds.ForEach(f =>
-            {
-                foreach (var VARIABLE in concepts)
+                IEnumerableExtensions.ForEach(feeds, f =>
                 {
-                    
-                }
-                conceptsDic.ContainsKey(f.)
-            });*/
-
-
-                foreach (var feed in feeds)
-                {
-
-                    string[] words = feed.Title.Split(' ');
-                    //string filePath = feed.Image.ToString();
-                    for (int j = 0; j < words.Length; j++)
+                    foreach (var concept in f.Concepts)
                     {
-                        //ASPxImageSlider1.Items.Add(filePath, string.Empty, feed.Link.ToString(), "Business", words[j]);
-
+                        if (!conceptsDic.ContainsKey(concept))
+                        {
+                            conceptsDic[concept] = 1;
+                        }
+                        else
+                        {
+                            conceptsDic[concept]++;
+                        }
                     }
-                    ASPxImageSlider1.Items.Add("Content/Black.png");
-                    ASPxImageSlider1.Items.Add("Content/Black.png");
+                });
+                var sortedConcepts = conceptsDic.ToList();
+                sortedConcepts.Sort((a, b) => { return b.Value.CompareTo(a.Value); });
+
+                foreach (var concept in sortedConcepts)
+                {
+                    var conceptFeeds = feeds.Where(f => f.Concepts.ToList().Contains(concept.Key));
+                    feeds = feeds.Where(f => !conceptFeeds.Contains(f)).ToArray();
+
+                    foreach (var feed in conceptFeeds)
+                    {
+                        string[] words = feed.Title.Split(' ');
+                        string filePath = feed.Image.ToString();
+                        for (int j = 0; j < words.Length; j++)
+                        {
+                            ASPxImageSlider1.Items.Add(filePath, string.Empty, feed.Link, concept.Key, words[j]);
+
+                        }
+                        ASPxImageSlider1.Items.Add("Content/Black.png");
+                        ASPxImageSlider1.Items.Add("Content/Black.png");
+                    }
                 }
             }
             catch (Exception ex)
