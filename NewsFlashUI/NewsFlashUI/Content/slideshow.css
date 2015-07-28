@@ -1,12 +1,12 @@
 ﻿.dxisControl .dxis-itemTextArea {
-    top: -10%;
-    left: 40%;
-    bottom: auto;
-    width: 285px;
+    bottom: 0;
+    left: 35%;
+    width: 30%;
     padding: 7px 16px 21px;
-    height: 80px;
+    /*height: 80px;*/
     color: transparent;
-    background-color: transparent;
+    background-color: white;
+    text-align: center;
 }
 
 .dxisControl .dxis-itemTextArea a {
@@ -19,6 +19,7 @@
     color: white;
     font-size: 15px;
      text-align: center;
+    margin: 0;
 }
 .dxisControl .dxis-itemTextArea > p {
     margin-bottom: 0 !important;
@@ -31,10 +32,11 @@
     -webkit-transform: matrix(1, 0, 0, 1, 0, 0) !important;
 }
 .isdemoH3 {
-    font-size: 60px !important;
+    font-size: 70px !important;
     color: black;
-    padding-bottom: 9px;
+   /* padding-bottom: 9px;*/
     text-align: center;
+    margin: 0px;
 }
 
 .dxis-item img{

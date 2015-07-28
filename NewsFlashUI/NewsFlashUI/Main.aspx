@@ -31,7 +31,7 @@
                     <asp:Table runat="server" ID="tblCategories" HorizontalAlign="Center">
                         <asp:TableRow>
                             <asp:TableCell>
-                                <asp:Button runat="server" ID="btnBusiness" Width="150px" Height="150px" ForeColor="White" BackColor="RoyalBlue" Text="Business" OnClick="btnBusiness_Click" />
+                                                    <asp:Button runat="server" ID="btnBusiness" Width="150px" Height="150px" ForeColor="White" BackColor="RoyalBlue" Text="Business" OnClick="btnBusiness_Click" />
                             </asp:TableCell>
                             <asp:TableCell>&nbsp;&nbsp;
                             </asp:TableCell>
@@ -63,17 +63,16 @@
                         </asp:TableRow>
                     </asp:Table>
                     <dx:ASPxImageSlider ID="ASPxImageSlider1" runat="server" ClientInstanceName="ImageSlider" SettingsImageArea-AnimationType="None" Visible="false"
-                        EnableViewState="False" EnableTheming="False" NavigateUrlFormatString="javascript:void({0});" ShowNavigationBar="false">
-                        <SettingsImageArea NavigationButtonVisibility="None" ImageSizeMode="FitProportional" ItemTextVisibility="Always" EnableLoopNavigation="true" />
-                        <SettingsSlideShow AutoPlay="true" StopPlayingWhenPaging="false" PausePlayingWhenMouseOver="false" PlayPauseButtonVisibility="Faded" Interval="300"></SettingsSlideShow>
-                        <Styles>
-                            <ImageArea Width="100%" Height="600" BackColor="LightGray" />
-                        </Styles>
-                        <ItemTextTemplate>
-                            <textarea></textarea>
-                            <h3 class='isdemoH3'><%# Eval("Text") %></a></h3>
-                        </ItemTextTemplate>
-                    </dx:ASPxImageSlider>
+                                            EnableViewState="False" EnableTheming="False" NavigateUrlFormatString="javascript:void({0});" ShowNavigationBar="false">
+                                            <SettingsImageArea NavigationButtonVisibility="None" ImageSizeMode="FitProportional" ItemTextVisibility="Always" EnableLoopNavigation="true" />
+                                            <SettingsSlideShow AutoPlay="true" StopPlayingWhenPaging="false" PausePlayingWhenMouseOver="false" PlayPauseButtonVisibility="Faded" Interval="300"></SettingsSlideShow>
+                                            <Styles>
+                                                <ImageArea Width="100%" Height="600" BackColor="LightGray" />
+                                            </Styles>
+                                            <ItemTextTemplate>
+                                                <h3 class='isdemoH3'><%# Eval("Text") %></a></h3>
+                                            </ItemTextTemplate>
+                                        </dx:ASPxImageSlider>
                 </td>
             </tr>
             <tr id="footer" style="height: 40px; background-color: white">
