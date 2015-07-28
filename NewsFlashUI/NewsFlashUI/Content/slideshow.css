@@ -1,9 +1,7 @@
 ﻿.dxisControl .dxis-itemTextArea {
     bottom: 0;
-    left: 35%;
-    width: 30%;
+    opacity: 0.6;
     padding: 0px;
-    /*height: 80px;*/
     color: transparent;
     background-color: white;
     text-align: center;
@@ -18,7 +16,7 @@
 .dxisControl .dxis-itemTextArea p {
     color: white;
     font-size: 15px;
-     text-align: center;
+    text-align: center;
     margin: 0;
 }
 .dxisControl .dxis-itemTextArea > p {
@@ -34,9 +32,9 @@
 .isdemoH3 {
     font-size: 70px !important;
     color: black;
-   /* padding-bottom: 9px;*/
     text-align: center;
     margin: 0px;
+    height: 95px;
 }
 
 .dxis-item img{

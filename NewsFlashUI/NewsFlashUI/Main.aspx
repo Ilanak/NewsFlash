@@ -67,7 +67,7 @@
                                             <SettingsImageArea NavigationButtonVisibility="None" ImageSizeMode="FitProportional" ItemTextVisibility="Always" EnableLoopNavigation="true" />
                                             <SettingsSlideShow AutoPlay="true" StopPlayingWhenPaging="false" PausePlayingWhenMouseOver="false" PlayPauseButtonVisibility="Faded" Interval="250"></SettingsSlideShow>
                                             <Styles>
-                                                <ImageArea Width="100%" Height="600" BackColor="LightGray" />
+                                                <ImageArea Width="100%" Height="600" BackColor="white" />
                                             </Styles>
                                             <ItemTextTemplate>
                                                 <h3 class='isdemoH3'><%# Eval("Text") %></a></h3>
