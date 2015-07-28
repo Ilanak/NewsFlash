@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Xml.Schema;
 using DataFeedsService.Feeds;
+using Microsoft.SqlServer.Server;
 using Newtonsoft.Json.Linq;
 
 namespace DataFeedsService.faroo
@@ -67,14 +68,17 @@ namespace DataFeedsService.faroo
                 {
                     var result = jsonResponse["results"][i];
 
+                    JArray multimedaArr = (JArray) result["multimedia"];
+                    /*var x = arr[0];
+                    var y = x["url"];*/
                     feed = new DataFeed
                     {
                         Link = new Url((string) result["url"]),
                         Title = (string) result["title"],
                         PublishTime = DateTime.Parse((string) result["created_date"]),
                         Source = (string) result["source"],
-                        Text = (string) result["abstract"]
-                        //Image = new Url((string) result[""])
+                        Text = (string) result["abstract"],
+                        Image = GetUrlOfLargestImage(multimedaArr)
                     };
                 }
                 catch(Exception e)
@@ -87,5 +91,36 @@ namespace DataFeedsService.faroo
             return feeds.ToArray();
         }
 
+        private Url GetUrlOfLargestImage(JArray multimedaArr)
+        {
+            string largestUrl = null;
+            int largestSize = 0;
+            if (multimedaArr == null || multimedaArr.Count == 0)
+            {
+                return null;
+            }
+
+            for (int i = 0; i < multimedaArr.Count; i++)
+            {
+                if ((string) multimedaArr[i]["type"] != "image")
+                {
+                    continue;
+                }
+
+                int currentSize = (int) multimedaArr[i]["height"] * (int) multimedaArr[i]["width"];
+                if (currentSize > largestSize)
+                {
+                    largestSize = currentSize;
+                    largestUrl = (string)multimedaArr[i]["url"];
+                }
+            }
+
+            if (largestUrl == null)
+            {
+                return null;
+            }
+
+            return new Url(largestUrl);
+        }
     }
 }
