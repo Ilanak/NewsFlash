@@ -31,22 +31,22 @@ namespace NewsFlashUI {
         protected global::System.Web.UI.WebControls.Table tblCategories;
         
         /// <summary>
-        /// btnBusiness control.
+        /// Button0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBusiness;
+        protected global::System.Web.UI.WebControls.Button Button0;
         
         /// <summary>
-        /// btnfashion control.
+        /// Button00 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnfashion;
+        protected global::System.Web.UI.WebControls.Button Button00;
         
         /// <summary>
         /// Button1 control.
