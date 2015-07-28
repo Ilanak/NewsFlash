@@ -45,15 +45,23 @@ namespace DataFeedsService
 
         private DataFeed EnrichWithConcepts(DataFeed feed)
         {
-            //var args = new SummarizerArguments
-            //{
-            //    DictionaryLanguage = "en",
-            //    DisplayLines = 1,
-            //    InputString = feed.Title + " " + feed.Text
-            //};
+            try
+            {
+                var args = new SummarizerArguments
+                {
+                    DictionaryLanguage = "en",
+                    DisplayLines = 1,
+                    InputString = string.Format("{0}. {1}", feed.Title, feed.Text)
+                };
 
-            //var summary = Summarizer.Summarize(args);
-            //feed.Concepts = summary.Concepts.ToArray();
+                var summary = Summarizer.Summarize(args);
+                feed.Concepts = summary.Concepts.ToArray();
+            }
+            catch (Exception e)
+            {
+                
+            }
+
 
             return feed;
         }
