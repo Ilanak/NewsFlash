@@ -69,7 +69,7 @@ namespace DataFeedsService.NewYorkTimes
                     JArray multimedaArr = (JArray) result["multimedia"];
                     feed = new DataFeed
                     {
-                        Link = new Url((string) result["url"]),
+                        Link = (string) result["url"],
                         Title = (string) result["title"],
                         PublishTime = DateTime.Parse((string) result["created_date"]),
                         Source = (string) result["source"],
@@ -87,7 +87,7 @@ namespace DataFeedsService.NewYorkTimes
             return feeds.ToArray();
         }
 
-        private Url GetUrlOfLargestImage(JArray multimedaArr)
+        private string GetUrlOfLargestImage(JArray multimedaArr)
         {
             string largestUrl = null;
             int largestSize = 0;
@@ -116,7 +116,7 @@ namespace DataFeedsService.NewYorkTimes
                 return null;
             }
 
-            return new Url(largestUrl);
+            return largestUrl;
         }
     }
 }
