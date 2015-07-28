@@ -5,11 +5,16 @@ using System;
     using System.Web.Security;
     using System.Web.SessionState;
     using DevExpress.Web;
+using System.Web.Routing;
 
     namespace NewsFlashUI {
         public class Global_asax : System.Web.HttpApplication {
             void Application_Start(object sender, EventArgs e) {
                 DevExpress.Web.ASPxWebControl.CallbackError += new EventHandler(Application_Error);
+
+                RegisterRoutes(RouteTable.Routes);
+
+
             }
 
             void Application_End(object sender, EventArgs e) {
@@ -30,5 +35,16 @@ using System;
                 // is set to InProc in the Web.config file. If session mode is set to StateServer 
                 // or SQLServer, the event is not raised.
             }
+
+            public static void RegisterRoutes(RouteCollection routes)
+            {
+               
+                routes.MapPageRoute(
+                    "Default",                    // Route name
+                    "",                           // URL with parameters
+                    "~/Main.aspx"  // Parameter defaults
+                );
+            }
+        
         }
     }

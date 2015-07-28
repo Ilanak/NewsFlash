@@ -22,22 +22,13 @@ namespace NewsFlashUI {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// ASPxPageControl1 control.
+        /// tblCategories control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxPageControl ASPxPageControl1;
-        
-        /// <summary>
-        /// ContentControl2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ContentControl ContentControl2;
+        protected global::System.Web.UI.WebControls.Table tblCategories;
         
         /// <summary>
         /// btnBusiness control.
@@ -92,15 +83,6 @@ namespace NewsFlashUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button4;
-        
-        /// <summary>
-        /// ContentControl1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ContentControl ContentControl1;
         
         /// <summary>
         /// ASPxImageSlider1 control.

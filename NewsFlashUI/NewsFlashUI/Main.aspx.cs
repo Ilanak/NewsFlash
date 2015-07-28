@@ -98,8 +98,10 @@ namespace NewsFlashUI
                 return;
             }
 
-            ASPxPageControl1.ActiveTabIndex = 1;
             NewsLoad(bt.Text);
+
+            tblCategories.Visible = ASPxImageSlider1.Visible;
+            ASPxImageSlider1.Visible = !tblCategories.Visible;
         }
     }
 

@@ -20,87 +20,57 @@
 <body>
     <form id="form1" runat="server">
         <table style="width: 100%">
-            <tr id="header" style="height: 50px; background-color: white; text-align: left;">
-                <td style="font-family: 'Segoe UI'; color: darkgray; font-weight: bold; text-align: left; vertical-align: middle">
-                    <img src="Content/NewsFlash.png" height="50px" />&nbsp;NewsFlash
+            <tr id="header" style="background-color: white; text-align: left;">
+                <td style="font-family: 'Segoe UI'; font-weight: bold; text-align: left; vertical-align: middle">
+                    <img src="Content/NewsFlasher.png" height="80"/>
                 </td>
-                <td style="width: 30%; font-family: 'Segoe UI'; color: darkgray; text-wrap: avoid; text-align: right">Hello, Ilana!</td>
             </tr>
-            <tr id="content" style="background-color: lightgray">
+            <tr id="trCategories">
                 <td colspan="2">
-                    <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" Width="100%" Height="100%"
-                        TabAlign="Justify" ActiveTabIndex="0" EnableTabScrolling="false">
-                        <TabStyle Paddings-PaddingLeft="50px" Paddings-PaddingRight="50px" />
-                        <ContentStyle>
-                            <Paddings PaddingLeft="40px" />
-                        </ContentStyle>
-                        <TabPages>
-                            <dx:TabPage Text="Categories">
-                                <ContentCollection>
-                                    <dx:ContentControl ID="ContentControl2" runat="server">
-                                        <table style="justify-content:center">
-                                            <tr>
-                                                <td>
-                                                    <asp:Button runat="server" ID="btnBusiness" Width="150px" Height="150px" ForeColor="White" BackColor="RoyalBlue" Text="Business" OnClick="btnBusiness_Click" />
-                                                </td>
-                                                <td>
-                                                    &nbsp;&nbsp;
-                                                </td>
-                                                <td>
-                                                    <asp:Button runat="server" ID="btnfashion" Text="Fashion" OnClick="btnBusiness_Click" Width="150px" Height="150px" ForeColor="White" BackColor="Teal"  />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <asp:Button runat="server" ID="Button1" Text="Sports" OnClick="btnBusiness_Click" Width="150px" Height="150px" ForeColor="White" BackColor="Magenta"  />
-
-                                                </td>
-                                                <td>
-                                                    &nbsp;&nbsp;
-                                                </td>
-                                                <td>
-                                                    <asp:Button runat="server" ID="Button2" Text="Technology" OnClick="btnBusiness_Click" Width="150px" Height="150px" ForeColor="White" BackColor="OrangeRed"  />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <asp:Button runat="server" ID="Button3" Text="World News" OnClick="btnBusiness_Click"  Width="150px" Height="150px" ForeColor="White" BackColor="PaleTurquoise" />
-
-                                                </td>
-                                                <td>
-                                                    &nbsp;&nbsp;
-                                                </td>
-                                                <td>
-                                                    <asp:Button runat="server" ID="Button4" Text="Food" OnClick="btnBusiness_Click"  Width="150px" Height="150px" ForeColor="White" BackColor="RoyalBlue" />
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </dx:ContentControl>
-                                </ContentCollection>
-                            </dx:TabPage>
-                            <dx:TabPage Text="News">
-                                <ContentCollection>
-                                    <dx:ContentControl ID="ContentControl1" runat="server">
-                                        <dx:ASPxImageSlider ID="ASPxImageSlider1" runat="server" ClientInstanceName="ImageSlider" SettingsImageArea-AnimationType="None"
+                    <asp:Table runat="server" ID="tblCategories" HorizontalAlign="Center">
+                        <asp:TableRow>
+                            <asp:TableCell>
+                                <asp:Button runat="server" ID="btnBusiness" Width="200px" height="200px" ForeColor="White" BackColor="#107c10" Text="Business" OnClick="btnBusiness_Click" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
+                            </asp:TableCell>
+                            <asp:TableCell>&nbsp;&nbsp;
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:Button runat="server" ID="btnfashion" Text="Fashion" OnClick="btnBusiness_Click" Width="200px" Height="200px" ForeColor="White" BackColor="#b4009e" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow>
+                            <asp:TableCell>
+                                <asp:Button runat="server" ID="Button1" Text="Sports" OnClick="btnBusiness_Click" Width="200px" Height="200px" ForeColor="White" BackColor="#ff8000" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
+                            </asp:TableCell>
+                            <asp:TableCell>&nbsp;&nbsp;
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:Button runat="server" ID="Button2" Text="Technology" OnClick="btnBusiness_Click" Width="200px" Height="200px" ForeColor="White" BackColor="#e81123" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow>
+                            <asp:TableCell>
+                                <asp:Button runat="server" ID="Button3" Text="World" OnClick="btnBusiness_Click" Width="200px" Height="200px" ForeColor="White" BackColor="#5c2d91" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
+                            </asp:TableCell>
+                            <asp:TableCell>&nbsp;&nbsp;
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:Button runat="server" ID="Button4" Text="Food" OnClick="btnBusiness_Click" Width="200px" Height="200px" ForeColor="White" BackColor="#0078d7" Font-Names="Segoe UI" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid" />
+                            </asp:TableCell>
+                        </asp:TableRow>
+                    </asp:Table>
+                    <dx:ASPxImageSlider ID="ASPxImageSlider1" runat="server" ClientInstanceName="ImageSlider" SettingsImageArea-AnimationType="None" Visible="false"
                                             EnableViewState="False" EnableTheming="False" NavigateUrlFormatString="javascript:void({0});" ShowNavigationBar="false">
                                             <SettingsImageArea NavigationButtonVisibility="None" ImageSizeMode="FitProportional" ItemTextVisibility="Always" EnableLoopNavigation="true" />
-                                            <SettingsSlideShow AutoPlay="true" StopPlayingWhenPaging="false" PausePlayingWhenMouseOver="false" PlayPauseButtonVisibility="Faded" Interval="300"></SettingsSlideShow>
+                                            <SettingsSlideShow AutoPlay="true" StopPlayingWhenPaging="false" PausePlayingWhenMouseOver="false" PlayPauseButtonVisibility="Faded" Interval="250"></SettingsSlideShow>
                                             <Styles>
-                                                <ImageArea Width="100%" Height="600" BackColor="LightGray" />
+                                                <ImageArea Width="100%" Height="600" BackColor="white" />
                                             </Styles>
                                             <ItemTextTemplate>
                                                 <h3 class='isdemoH3'><%# Eval("Text") %></a></h3>
                                             </ItemTextTemplate>
                                         </dx:ASPxImageSlider>
-                                    </dx:ContentControl>
-                                </ContentCollection>
-                            </dx:TabPage>
-                        </TabPages>
-                    </dx:ASPxPageControl>
                 </td>
-            </tr>
-            <tr id="footer" style="height: 40px; background-color: white">
-                <td colspan="2" style="color: darkgray; font-family: 'Segoe UI'">Copyright NewsFlash 2015. All rights reserved.</td>
             </tr>
         </table>
         <h2 class="titles">The whole shabang</h2>
