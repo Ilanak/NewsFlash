@@ -20,11 +20,10 @@
 <body>
     <form id="form1" runat="server">
         <table style="width: 100%">
-            <tr id="header" style="height: 50px; background-color: white; text-align: left;">
+            <tr id="header" style="background-color: white; text-align: left;">
                 <td style="font-family: 'Segoe UI'; font-weight: bold; text-align: left; vertical-align: middle">
-                    <img src="Content/NewsFlash.png" height="50px" />&nbsp;NewsFlash
+                    <img src="Content/NewsFlasher.png" height="80"/>
                 </td>
-                <td style="width: 30%; font-family: 'Segoe UI'; text-wrap: avoid; text-align: right">Hello, Ilana!</td>
             </tr>
             <tr id="trCategories">
                 <td colspan="2">
@@ -72,9 +71,6 @@
                                             </ItemTextTemplate>
                                         </dx:ASPxImageSlider>
                 </td>
-            </tr>
-            <tr id="footer" style="height: 40px; background-color: white">
-                <td colspan="2" style="color: darkgray; font-family: 'Segoe UI'">Copyright NewsFlash 2015. All rights reserved.</td>
             </tr>
         </table>
     </form>
