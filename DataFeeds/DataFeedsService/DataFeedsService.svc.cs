@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Security.Policy;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
@@ -24,47 +25,40 @@ namespace DataFeedsService
 
         public async Task<DataFeed[]> GetFeedsAsync(Topic topic)
         {
-            /*if (string.IsNullOrEmpty(topic))
-            {
-                throw new ArgumentNullException("topic");
-            }*/
-
             DateTime queryStartTime = DateTime.UtcNow - TimeSpan.FromHours(QueryPeriodInHours);
-            var results = new List<DataFeed>();
-            while (results.Count < MaxResults)
-            {
-                int currentNumberOfResults = results.Count;
-                int maxResults = MaxResults - currentNumberOfResults;
-                int maxResultsPerFeed = (maxResults / dataFeeds.Length) + 1;
-                var feeds = (await Task.WhenAll(dataFeeds.Select(feed => feed.GetFeedsAsync(topic, maxResultsPerFeed, queryStartTime))))
-                    .SelectMany(f => f)
-                    .Where(f => !results.Any(r => r.Link.Equals(f.Link)))
-                    .Take(maxResults);
+            DataFeed[][] allFeeds = await Task.WhenAll(dataFeeds.Select(feed => feed.GetFeedsAsync(topic, MaxResults, queryStartTime)));
+            IEnumerable<IGrouping<Url, DataFeed>> groupedFeeds =
+                allFeeds
+                    .SelectMany(feed => feed)
+                    .GroupBy(feed => feed.Link);
 
-                results.AddRange(feeds);
-                if (results.Count == currentNumberOfResults)
-                {
-                    break;
-                }
-            }
-
-            results.ForEach(f => EnrichWithConcepts(f));
-            return results.ToArray();
+            return groupedFeeds
+                .Select(feedGroup => feedGroup.First())
+                .Select(EnrichWithConcepts)
+                .ToArray();
         }
 
-        private DataFeed EnrichWithConcepts(DataFeed result)
+        private DataFeed EnrichWithConcepts(DataFeed feed)
         {
+            try
+            {
+                var args = new SummarizerArguments
+                {
+                    DictionaryLanguage = "en",
+                    DisplayLines = 1,
+                    InputString = feed.Title
+                };
 
-             var summary = Summarizer.Summarize(new SummarizerArguments()
-                                               {
-                                                   DictionaryLanguage = "en",
-                                                   DisplayLines = 1,
-                                                   InputString = result.Title + " " + result.Text
-                                               });
-            result.Concepts = summary.Concepts.ToArray();
+                var summary = Summarizer.Summarize(args);
+                feed.Concepts = summary.Concepts.ToArray();
+            }
+            catch (Exception e)
+            {
+                
+            }
 
-            return result;
-            
+
+            return feed;
         }
     }
 }

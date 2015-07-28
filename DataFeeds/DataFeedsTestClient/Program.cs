@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataFeedsTestClient.ServiceReference1;
-
+using System.ServiceModel;
+using DataFeedsService;
 
 namespace DataFeedsTestClient
 {
@@ -12,9 +8,15 @@ namespace DataFeedsTestClient
     {
         static void Main(string[] args)
         {
-            var client = new ServiceReference1.DataFeedsClient();
-            var channel = client.ChannelFactory.CreateChannel();
-            var feeds = channel.GetFeedsAsync(Topic).Result;
+            //var client = new DataFeedsClient();
+            //var channel = client.ChannelFactory.CreateChannel();
+            //var feeds = channel.GetFeedsAsync("s1").Result;
+
+            ChannelFactory<IDataFeeds> factory = new ChannelFactory<IDataFeeds>("DataFeeds");
+            var proxy = factory.CreateChannel();
+            var feeds = proxy.GetFeedsAsync(Topic.Sports).Result;
+            ((IDisposable)proxy).Dispose();
+
 
             foreach (DataFeed feed in feeds)
             {
