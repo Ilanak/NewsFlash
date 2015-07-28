@@ -98,8 +98,8 @@ namespace DataFeedsService
             if (image != null)
             {
                 feed.Image = image.MediaUrl;
-            return feed;
-        }
+                return feed;
+            }
 
             return null;
         }
