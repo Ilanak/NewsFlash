@@ -30,9 +30,8 @@
             <tr id="content" style="background-color: lightgray">
                 <td colspan="2">
                     <dx:ASPxImageSlider ID="ASPxImageSlider1" runat="server" ClientInstanceName="ImageSlider" SettingsImageArea-AnimationType="None"
-                        EnableViewState="False" EnableTheming="False" NavigateUrlFormatString="javascript:void({0});">
+                        EnableViewState="False" EnableTheming="False" NavigateUrlFormatString="javascript:void({0});" ShowNavigationBar="false">
                         <SettingsImageArea ImageSizeMode="FitProportional" ItemTextVisibility="Always" EnableLoopNavigation="true" />
-                        <SettingsNavigationBar Mode="Dots" ThumbnailsModeNavigationButtonVisibility="None" />
                         <SettingsSlideShow AutoPlay="true" StopPlayingWhenPaging="false" PausePlayingWhenMouseOver="false" PlayPauseButtonVisibility="Faded" Interval="200"></SettingsSlideShow>
                         <Styles>
                             <ImageArea Width="70%" Height="600" />
