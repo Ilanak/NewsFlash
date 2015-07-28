@@ -40,6 +40,18 @@ namespace DataFeedsService.Feeds
             return feed;
         }
 
+        private string getSource(string title)
+        {
+            char[] seperators = {'|', '-'};
+            foreach (char c in seperators)
+            {
+                if (title.IndexOf(c) != -1)
+                {
+                    return title.Split(c)[title.Split(c).Length - 1];
+                }
+            }
+            return "Alchemy";
+        }
         private DateTime UnixTimeStampToDateTime(string unixTimeStamp)
         {
             // Unix timestamp is seconds past epoch
@@ -56,13 +68,13 @@ namespace DataFeedsService.Feeds
             for (int i = 0; i < Math.Min(resultsFeedNumber, maxResults); i++)
             {
                 var result = jsonResponse["result"]["docs"][i];
-
+                var title = (string)result["source"]["enriched"]["url"]["title"];
                 DataFeed feed = new DataFeed
                 {
                     Link = new Url((string)result["source"]["enriched"]["url"]["url"]),
-                    Title = (string) result["source"]["enriched"]["url"]["title"],
+                    Title = title,
                     PublishTime = UnixTimeStampToDateTime((string)result["timestamp"]),
-                    Source = "Alchemy",
+                    Source = getSource(title),
                     Image = null
                 };
                 feeds.Add(feed);
