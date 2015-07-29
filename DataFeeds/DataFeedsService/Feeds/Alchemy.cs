@@ -15,7 +15,7 @@ namespace DataFeedsService.Feeds
                     {Topic.Fashion, "styl%20and%20fashion"},
                     {Topic.Technology," technology%20and%20computing"},
                     {Topic.Sports,"sports"},
-                    {Topic.WorldNews,"news"},
+                    {Topic.World,"news"},
                     {Topic.Food,"food%20and%20drink"} 
                 };
 
