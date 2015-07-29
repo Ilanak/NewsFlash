@@ -20,7 +20,7 @@ namespace DataFeedsService.NewYorkTimes
             {Topic.Fashion, "fashion%20&%20style"},
             {Topic.Technology,"technology"},
             {Topic.Sports,"sports"},
-            {Topic.WorldNews,"world"},
+            {Topic.World,"world"},
             {Topic.Food,"food"}
         };
 

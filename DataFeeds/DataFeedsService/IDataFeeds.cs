@@ -28,7 +28,7 @@ namespace DataFeedsService
         [EnumMember]
         Sports,
         [EnumMember]
-        WorldNews,
+        World,
         [EnumMember]
         Food
     }
