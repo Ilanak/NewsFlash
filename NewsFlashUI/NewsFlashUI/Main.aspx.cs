@@ -18,7 +18,6 @@ namespace NewsFlashUI
     public partial class Main : System.Web.UI.Page
     {
         private Dictionary<string, int> conceptsDic = new Dictionary<string, int>();
-
         protected void Page_Load(object sender, EventArgs e)
         {
         

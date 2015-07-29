@@ -15,6 +15,15 @@
 
         window.appInsights = appInsights;
         appInsights.trackPageView();
+        document.getElementById("summary").style.display = "none";
+        function toggleSummary() { 
+            if (document.getElementById("summary").style.display === "block") {
+                document.getElementById("summary").style.display = "none";
+            } else {
+                document.getElementById("summary").style.display = "block";
+            }
+            
+        }
     </script>
 </head>
 <body>
@@ -73,8 +82,8 @@
                 </td>
             </tr>
         </table>
-        <h2 class="titles">The whole shabang</h2>
-        <div>
+        <div id="summary" style="text-align:center">
+            <h2>The whole shabang!</h2>
             <ul id="uList" runat="server">
             </ul>
         </div>
