@@ -38,14 +38,6 @@ namespace NewsFlashUI
                 
                 feeds = feeds.Where((f) => f != null).ToArray();
 
-                foreach (var feed in feeds)
-                {
-                    uList.InnerHtml += "<li>" +
-                                       "<div style='background-image: url(\"" + feed.Image + "\");'></div>" +
-                                       "<a href=" + feed.Link + " >" + feed.Title + "<a>" +
-                                       "</li>";
-                }
-
                 IEnumerableExtensions.ForEach(feeds, f =>
                 {
                     foreach (var concept in f.Concepts)
@@ -70,7 +62,7 @@ namespace NewsFlashUI
 
                     foreach (var feed in conceptFeeds)
                     {
-                        string[] words = feed.Title.Split(' ');
+                        string[] words = feed.Title.Replace(',', ' ').Replace('|', ' ').Split(' ').Where(w => !w.Equals("-")).ToArray();
                         string filePath = feed.Image.ToString();
 
                         ASPxImageSlider1.Items.Add(filePath, string.Empty, feed.Link, string.Empty);
@@ -80,6 +72,11 @@ namespace NewsFlashUI
 
                         }
                         ASPxImageSlider1.Items.Add(filePath, string.Empty, feed.Link, string.Empty);
+
+                        uList.InnerHtml += "<li>" +
+                           "<div style='background-image: url(\"" + feed.Image + "\");'></div>" +
+                           "<a href=" + feed.Link + " target=\"_blank\">" + feed.Title + "<a>" +
+                           "</li>";
                     }
                 }
             }

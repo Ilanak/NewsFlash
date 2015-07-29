@@ -15,15 +15,15 @@
 
         window.appInsights = appInsights;
         appInsights.trackPageView();
-        document.getElementById("summary").style.display = "none";
-        function toggleSummary() { 
-            if (document.getElementById("summary").style.display === "block") {
-                document.getElementById("summary").style.display = "none";
-            } else {
-                document.getElementById("summary").style.display = "block";
-            }
-            
-        }
+        
+    </script>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <script>
+        window.setTimeout((function () {
+             $("#summary").css("display", "block");
+        }), 10000);
     </script>
 </head>
 <body>
@@ -82,8 +82,7 @@
                 </td>
             </tr>
         </table>
-        <div id="summary" style="text-align:center">
-            <h2>The whole shabang!</h2>
+        <div id="summary" style="text-align:center; display:none">
             <ul id="uList" runat="server">
             </ul>
         </div>
